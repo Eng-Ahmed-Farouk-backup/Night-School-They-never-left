@@ -59,3 +59,8 @@ class Game:
             self.settings["text_speed"] = "Fast"
         elif option == 3:
             return
+    
+    def sound_volume_menu(self):
+        options = range(0, 11)
+        option = uni_interactive_menu(options, "Select Sound Volume (0-10)", "yellow")
+        self.settings["sound_volume"] = option
