@@ -13,3 +13,9 @@ to Work as a therapist for the Dead ones , to make them realize they are dead an
 The Dead ones will eat anybody and then eat theirselves if they knew they are dead ones and they have to leave earth !
 so Max should do this in a long-term proccess and act like he is like them and to talk with them to solve their problems without making them eat him and theirselves !
 
+## Paths 
+#### Path 1 : a way to the light
+#### Path 2 : Denial the Truth
+#### Path 3 : I am the Monster
+#### Path 4 : Late to school
+
