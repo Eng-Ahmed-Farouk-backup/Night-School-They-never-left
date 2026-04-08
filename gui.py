@@ -11,7 +11,9 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+    
     scene(screen,background_image="main menu.png",sound_effect="main menu music.mp3",skip=True)
+    jumpscare(screen,"jumpscare.png","main menu music.mp3")
     scene(screen,"The story with Max Ran a teenager who is a high school, his life was average, until two angels falled from the heavens named alaska and anabelle to give him a specific mission, His mission was to be a therapist for the dead ones.",(255,0,0),"main bg.png","main menu music.mp3",True)
     scene(screen,"Max was in a high school that seems normal but in nighttime it turns into a school for the dead ones including teachers and students, dead ones are humans that died before the 13th century, they think they are alive but they are actually dead, Max`s mission is to try to solve thier problems and cure them to run in peace",(255,0,0),"main bg.png","main menu music.mp3",True)
     scene(screen,"You are Max Ran, Running for your life",(255,0,0),"main bg.png","main menu music.mp3",True)

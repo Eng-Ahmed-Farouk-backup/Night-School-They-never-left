@@ -1,7 +1,7 @@
 import pygame
 pygame.mixer.init()
 pygame.init()
-def scene(surface,text="",color=(0,0,0),background_image=None,sound_effect=None):
+def scene(surface,text="",color=(0,0,0),background_image=None,sound_effect=None,skip=False):
     if background_image:
         background = pygame.image.load("assets/"+background_image)
         surface.blit(background, (0, 0))
@@ -12,14 +12,14 @@ def scene(surface,text="",color=(0,0,0),background_image=None,sound_effect=None)
     if text:
         print(text)
         font = pygame.font.Font("BRADHITC.TTF", 24)
-        text_surface = font.render(text, True, color, (255, 255, 255))
+        text_surface = font.render(text, True, color, wraplength=700)
         surface.blit(text_surface, (20, surface.get_height()/2 - 50))
 
-    while pygame.mixer.music.get_busy():
+    while pygame.mixer.music.get_busy() and not skip:
         pass
     #continue button
     button_font = pygame.font.Font("BRADHITC.TTF", 32)
-    button_surface = button_font.render("Continue", True, (255, 0, 0), (255, 255, 255))
+    button_surface = button_font.render("Continue", True, (255, 0, 0))
     button_rect = button_surface.get_rect()
     button_rect.center = (surface.get_width()/2, surface.get_height()/2 + 150)
     surface.blit(button_surface, button_rect)
@@ -31,6 +31,7 @@ def scene(surface,text="",color=(0,0,0),background_image=None,sound_effect=None)
                 exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if button_rect.collidepoint(event.pos):
+                    pygame.mixer.music.stop()
                     return
 
 
@@ -61,6 +62,15 @@ def choice_scene(surface,header,color,choices,background_image=None,sound_effect
                     choice_rect.topleft = (15, surface.get_height()/2 + i*35)
                     if choice_rect.collidepoint(event.pos):
                         return i
-    
+
+
+def jumpscare(surface,image,sound_effect):
+    background = pygame.image.load("assets/"+image)
+    surface.blit(background, (0, 0))
+    pygame.display.flip()
+    pygame.mixer.music.load("assets/"+sound_effect)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        pass
 
     
