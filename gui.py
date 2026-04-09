@@ -24,3 +24,44 @@ while True:
     s.scene(screen,"Your first mission is for you to join the dead ones night school as a normal student and act like them",(255,0,0),"main bg.png","bg sound.mp3",True)
     s.scene(screen,"this is your first day in this mission, when you entered your school at night you found a security guard that his face looks like it was melting, you suddenly started screaming, but he told you, 'HEY BOY! WHY ARE YOU SCREAMING' (in all caps), you said sorry and started running",(255,0,0),"main bg.png","bg sound.mp3",True)
     s.scene(screen,"While you are running you saw natasa durk, your high school crush",(255,0,0),"main bg.png","bg sound.mp3",True)
+    first_choice = s.choice_scene(screen,"What do you do?",(255,0,0),["Stalk her","Talk to her"],"main bg.png","bg sound.mp3")
+    if first_choice == 0:
+        s.scene(screen,"You stalked her and saw her acting like the dead until you realized she is not her, she is her grandma, you got scared and ran away",(255,0,0),"main bg.png","bg sound.mp3",True)
+        s.jumpscare(screen,"jumpscare.png","jumpscare music.mp3")
+        s.scene(screen,"'YOU ARE STALKING ME YOU PERVERT' said natasa, You ran as max ran haha (cheap joke)",(255,0,0),"main bg.png","bg sound.mp3",True)
+    elif first_choice == 1:
+        s.scene(screen,"You talk to her and she screams in your face, and she told you she is not natasa he is durk, you realized he is natasa`s grandma, you got scared and ran as max ran haha (cheap joke)",(255,0,0),"main bg.png","bg sound.mp3",True)
+    s.scene(screen,"You remembered your mission: the first dead one you should cure is salah the security guard like anabelle and alaska told me. I have to go back to this melted face, you said",(255,0,0),"main bg.png","bg sound.mp3",True)
+    s.scene(screen,"There is a sound behind you",(255,0,0),"main bg.png","satan voice.mp3",True)
+    s.scene(screen,"You cant look back! this is a rule if you heard a sound you cant look back",(255,0,0),"main bg.png","satan voice.mp3",True)
+    s.scene(screen,"(Foot steps sound)...",(255,0,0),"main bg.png","satan voice.mp3",True)
+    s.scene(screen,"You are getting closer to the sound",(255,0,0),"main bg.png","satan voice.mp3",True)
+    s.jumpscare(screen,"jumpscare.png","jumpscare music.mp3")
+    s.scene(screen,"You can not resist and you look back",(255,0,0),"main bg.png","scary moments.mp3",True)
+    s.scene(screen,"IT IS SATAN, YOU FREEZE AND DO NOT KNOW WHAT TO DO",(255,0,0),"main bg.png","scary moments.mp3",True)
+    s.scene(screen,"YOU HEAR A SOUND....................",(255,0,0),"main bg.png","run run sound.mp3",False)
+    s.jumpscare(screen,"jumpscare.png","jumpscare music.mp3")
+    primary_choice = s.choice_scene(screen,"What do you do?",(255,0,0),["Run as the voice told you","See who is talking","Freeze and do not move","Hide in the classroom"],"main bg.png","scary moments.mp3")
+    #path 1 here
+    if primary_choice == 0:
+        pass
+    #path 2 here
+    elif primary_choice == 1:
+        pass
+    #path 3 here
+    elif primary_choice == 2:
+        pass
+    #path 4 here
+    elif primary_choice == 3:
+        pass
+    
+
+   
+
+        
+
+
+
+
+    pygame.display.flip()
+    clock.tick(FPS)
