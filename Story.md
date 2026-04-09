@@ -16,6 +16,5 @@ so Max should do this in a long-term proccess and act like he is like them and t
 ## Paths 
 #### Path 1 : a way to the light
 #### Path 2 : Denial the Truth
-#### Path 3 : I am the Monster
-#### Path 4 : Late to school
+
 
