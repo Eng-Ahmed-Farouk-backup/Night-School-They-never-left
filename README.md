@@ -1,6 +1,6 @@
 # Night School - They never left
 this is a GUI RPG game made using python pygame library
-![image](assets/main%20bg.png)
+![image](assets/game.png)
 ## Mechanics
 this game uses mechanics like
 ### 1- scene music
