@@ -15,6 +15,6 @@ so Max should do this in a long-term proccess and act like he is like them and t
 
 ## Paths 
 #### Path 1 : a way to the light
+in this Path max will know he is dead one like the other dead ones and alaska and annabel were helping him know this
 #### Path 2 : Denial the Truth
-
-
+in this Path max will think that alaska and annabel were demons but he will discover he is wrong and they are angels and want to really help him and save the world!, max will also know he is dead one like the other dead ones and alaska and annabel were helping him know this
