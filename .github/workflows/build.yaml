@@ -28,24 +28,23 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller pygame
     
-    - name: Build executable with PyInstaller
+    - name: Build executable
+      shell: cmd
       run: |
         pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="assets/icon.ico" --add-data "assets;assets" main.py
     
-    - name: Create game distribution folder
+    - name: Create distribution folder
+      shell: cmd
       run: |
-        mkdir "NightSchool_TheyNeverLeft"
-        # Copy everything from repo (excluding .git)
-        xcopy . "NightSchool_TheyNeverLeft\" /E /I /EXCLUDE:.gitignore
-        # Overwrite with the standalone exe
-        copy dist\NightSchool_TheyNeverLeft.exe "NightSchool_TheyNeverLeft\"
-        # Delete unnecessary build files
-        rmdir /S /Q "NightSchool_TheyNeverLeft\.git" 2>nul
-        del "NightSchool_TheyNeverLeft\*.spec" 2>nul
+        mkdir NightSchool_TheyNeverLeft
+        copy dist\NightSchool_TheyNeverLeft.exe NightSchool_TheyNeverLeft\
+        xcopy assets NightSchool_TheyNeverLeft\assets\ /E /I /Y
+        copy *.py NightSchool_TheyNeverLeft\
     
-    - name: Create ZIP archive
+    - name: Create ZIP
+      shell: cmd
       run: |
-        Compress-Archive -Path "NightSchool_TheyNeverLeft" -DestinationPath "NightSchool_TheyNeverLeft-Windows.zip"
+        powershell Compress-Archive -Path NightSchool_TheyNeverLeft -DestinationPath NightSchool_TheyNeverLeft-Windows.zip -Force
     
     - name: Create Release
       uses: softprops/action-gh-release@v1
@@ -61,10 +60,6 @@ jobs:
           1. Download `NightSchool_TheyNeverLeft-Windows.zip`
           2. Extract the ZIP file anywhere
           3. Run `NightSchool_TheyNeverLeft.exe`
-          
-          ### System Requirements:
-          - Windows 10 or later
-          - No installation required!
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
