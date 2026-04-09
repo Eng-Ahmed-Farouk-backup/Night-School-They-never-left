@@ -23,7 +23,7 @@ jobs:
         pip install pyinstaller pygame
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="assets/icon.ico" --add-data "assets;assets" --hidden-import=interactive_console --hidden-import=items --hidden-import=interactive_gui --hidden-import=gui main.py
+        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="assets/icon.ico" --add-data "assets;assets" --add-data "interactive_console.py" --add-data "items.py" --add-data "interactive_gui.py" --add-data "gui.py" main.py
     - name: Create game folder with assets
       run: |
         mkdir "NightSchool_TheyNeverLeft"
@@ -40,10 +40,7 @@ jobs:
         body: |
           # Night School: They Never Left
           
-          ## A Visual Novel by [Your Name]
-          
-          ### Story:
-          Max Ran is a typical high school student... until two angels, Alaska and Anabelle, fall from heaven to give him a mission. His task? Become a therapist for the dead.
+          ## A Visual Novel by Ahmed Farouk
           
           ### Download & Play:
           1. Download `NightSchool_TheyNeverLeft-Windows.zip`
@@ -53,17 +50,6 @@ jobs:
           ### System Requirements:
           - Windows 10 or later
           - No installation required - runs directly!
-          
-          ### Controls:
-          - Click "Continue" to advance dialogue
-          - Click choices when they appear
-          - Close window to exit
-          
-          ### Note:
-          If Windows SmartScreen appears, click "More info" → "Run anyway"
-          
-          ---
-          *"When two angels fall from heaven, the dead finally find peace."*
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build-linux:
@@ -85,7 +71,7 @@ jobs:
         pip install pyinstaller pygame
     - name: Build executable
       run: |
-        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="icon.ico" --add-data "assets:assets" --hidden-import=interactive_console --hidden-import=items --hidden-import=interactive_gui --hidden-import=gui main.py
+        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="icon.ico" --add-data "assets:assets" --add-data "interactive_console.py" --add-data "items.py" --add-data "interactive_gui.py" --add-data "gui.py" main.py
     - name: Create game folder
       run: |
         mkdir -p NightSchool_TheyNeverLeft
