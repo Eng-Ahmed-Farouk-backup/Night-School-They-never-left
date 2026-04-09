@@ -18,13 +18,13 @@ class scenes:
             self.current_music = sound_effect
         if text:
             print(text)
-            font = pygame.font.Font("BRADHITC.TTF", 24)
+            font = pygame.font.Font(os.path.join("assets", "BRADHITC.TTF"), 24)
             text_surface = font.render(text, True, color, wraplength=700)
             surface.blit(text_surface, (20, surface.get_height()/2 - 50))
 
         
         #continue button
-        button_font = pygame.font.Font("BRADHITC.TTF", 32)
+        button_font = pygame.font.Font(os.path.join("assets", "BRADHITC.TTF"), 32)
         button_surface = button_font.render("Continue", True, (255, 0, 0))
         button_rect = button_surface.get_rect()
         button_rect.center = (surface.get_width()/2, surface.get_height()/2 + 150)
