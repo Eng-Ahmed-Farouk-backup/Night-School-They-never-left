@@ -5,10 +5,13 @@ class scenes:
     def __init__(self, surface):
         self.surface = surface
         self.current_music = None
-    def scene(self,surface,text="",color=(0,0,0),background_image=None,sound_effect=None,skip=False):
+    def scene(self,surface,text="",color=(0,0,0),background_image=None,sound_effect=None,skip=True):
         if background_image:
             background = pygame.image.load("assets/"+background_image)
             surface.blit(background, (0, 0))
+        if not sound_effect:
+            pygame.mixer.music.stop()
+            self.current_music = None
         if sound_effect and (not self.current_music == sound_effect or not pygame.mixer.music.get_busy()):
             pygame.mixer.music.load("assets/"+sound_effect)
             pygame.mixer.music.play()
