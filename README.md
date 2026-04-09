@@ -39,7 +39,8 @@ the story is talking about an average High school that is ghost house in the Nig
 - `gui.py` -. contains story in GUI and used to run the GUI game
 
 ## Installation
-Go to Release Link : https://github.com/Eng-Ahmed-Farouk/Night-School--They-Never-Left/releases/tag/v1.3.1
+Go to Release Link : https://github.com/Eng-Ahmed-Farouk/Night-School--They-Never-Left/releases/tag/v1.4.1
+
 Download `NightSchool_TheyNeverLeft-Windows.zip`
 Extract the ZIP file anywhere
 
