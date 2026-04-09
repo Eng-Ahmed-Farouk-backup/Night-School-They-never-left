@@ -1,4 +1,3 @@
-from entities import *
 from items import *
 from interactive_console import *
 from gui import *
@@ -9,7 +8,6 @@ pygame.mixer.init()
 
 class Game:
     def __init__(self):
-        self.player = Player("Max Ran", 100, 10, 5, 0, 0.15)
         self.settings = {
             "text_speed": "Normal"
         }
