@@ -26,7 +26,6 @@ jobs:
         mkdir "NightSchool_TheyNeverLeft"
         copy dist\NightSchool_TheyNeverLeft.exe "NightSchool_TheyNeverLeft\"
         xcopy assets "NightSchool_TheyNeverLeft\assets\" /E /I
-        copy BRADHITC.TTF "NightSchool_TheyNeverLeft\"
     - name: Create ZIP archive
       run: |
         Compress-Archive -Path "NightSchool_TheyNeverLeft" -DestinationPath "NightSchool_TheyNeverLeft-Windows.zip"
@@ -89,7 +88,6 @@ jobs:
         mkdir -p NightSchool_TheyNeverLeft
         cp dist/NightSchool_TheyNeverLeft NightSchool_TheyNeverLeft/
         cp -r assets NightSchool_TheyNeverLeft/
-        cp BRADHITC.TTF NightSchool_TheyNeverLeft/
         zip -r NightSchool_TheyNeverLeft-Linux.zip NightSchool_TheyNeverLeft/
     - name: Attach to Release
       if: startsWith(github.ref, 'refs/tags/')
