@@ -1,4 +1,3 @@
-# For testing
 import os
 import time
 import keyboard
@@ -10,6 +9,7 @@ def clear_console():
 def interactive_menu(options, header = "", color = ""):
     current = 0
     while True:
+        time.sleep(0.3)
         clear_console()
         print(colored(header, color))
         for i, option in enumerate(options):
@@ -41,17 +41,16 @@ def uni_interactive_menu(options, header = "", color = ""):
         elif key == "enter":
             return current
 
-
 def println(msg, color = "white", speed = "Normal"):
     speeds = {
-        "Slow":1,
-        "Normal":2,
-        "Fast":3
+        "Slow":0.7,
+        "Normal":1,
+        "Fast":1.5
     }
     for m in msg.split("\n"):
         print(colored(m, color))
         start_time = time.time()
-        while time.time() < start_time + max(len(m)/(2*speeds[speed]),2):
+        while time.time() < start_time + max(len(m)/(10*speeds[speed]),2):
             if keyboard.is_pressed("space"):break
         time.sleep(0.05)
 

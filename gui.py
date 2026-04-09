@@ -1,12 +1,13 @@
 import pygame
 from interactive_gui import *
-screen = pygame.display.set_mode((900, 500))
 
-FPS = 60
 
-clock = pygame.time.Clock()
+def gui_main():
+    screen = pygame.display.set_mode((900, 500))
 
-while True:
+    FPS = 60
+
+    clock = pygame.time.Clock()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -78,7 +79,7 @@ while True:
         s.scene(screen,"I have to find the light, you started remembring the story natasa told you, maybe the light is something I have , You started remembring your memories with your brother, it was in in 16th centuary",(255,0,0),"main bg.png","bg sound.mp3",True)
         s.scene(screen,"but how in the 16th century , I am in the 21 Century, you said",(255,0,0),"main bg.png","bg sound.mp3",True)
         s.scene(screen,"I am Dead one Max ran is a dead one, you said, You saw a path to the heaven filled of light , you relize this is the light zach and natasa were talking about , you went to heaven and ran in peace",(255,0,0),"main bg.png","bg sound.mp3",True)
-        break
+        return
 
     #path 2 here
     elif primary_choice == 1:
@@ -123,7 +124,7 @@ while True:
         s.scene(screen,"I have to find the light, you started remembring the story natasa told you, maybe the light is something I have , You started remembring your memories with your brother, it was in in 16th centuary",(255,0,0),"main bg.png","bg sound.mp3",True)
         s.scene(screen,"but how in the 16th century , I am in the 21 Century, you said",(255,0,0),"main bg.png","bg sound.mp3",True)
         s.scene(screen,"I am Dead one Max ran is a dead one, you said, You saw a path to the heaven filled of light , you relize this is the light zach and natasa were talking about , you went to heaven and ran in peace",(255,0,0),"main bg.png","bg sound.mp3",True)
-        break
+        return
     
     
     pygame.display.flip()
