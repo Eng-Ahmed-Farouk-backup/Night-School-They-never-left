@@ -23,7 +23,7 @@ jobs:
         pip install pyinstaller pygame
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="assets/icon.ico" --add-data "assets;assets" main.py
+        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="assets/icon.ico" --add-data "assets;assets" --hidden-import=interactive_console --hidden-import=items --hidden-import=interactive_gui --hidden-import=gui main.py
     - name: Create game folder with assets
       run: |
         mkdir "NightSchool_TheyNeverLeft"
@@ -85,7 +85,7 @@ jobs:
         pip install pyinstaller pygame
     - name: Build executable
       run: |
-        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="icon.ico" --add-data "assets:assets" main.py
+        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="icon.ico" --add-data "assets:assets" --hidden-import=interactive_console --hidden-import=items --hidden-import=interactive_gui --hidden-import=gui main.py
     - name: Create game folder
       run: |
         mkdir -p NightSchool_TheyNeverLeft
