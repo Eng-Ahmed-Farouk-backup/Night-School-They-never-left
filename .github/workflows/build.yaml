@@ -1,42 +1,57 @@
 name: Build Night School EXE
+
 on:
   push:
     tags:
       - 'v*'
   workflow_dispatch:
+
 permissions:
   contents: write
   packages: write
+
 jobs:
   build-windows:
     runs-on: windows-latest
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.9'
+    
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pyinstaller pygame
+    
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --windowed --name "NightSchool_TheyNeverLeft" --icon="assets/icon.ico" --add-data "assets;assets" main.py
-    - name: Create game folder with assets
+        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --icon="assets/icon.ico" --add-data "assets;assets" main.py
+    
+    - name: Create game distribution folder
       run: |
         mkdir "NightSchool_TheyNeverLeft"
+        # Copy everything from repo (excluding .git)
+        xcopy . "NightSchool_TheyNeverLeft\" /E /I /EXCLUDE:.gitignore
+        # Overwrite with the standalone exe
         copy dist\NightSchool_TheyNeverLeft.exe "NightSchool_TheyNeverLeft\"
-        xcopy assets "NightSchool_TheyNeverLeft\assets\" /E /I
+        # Delete unnecessary build files
+        rmdir /S /Q "NightSchool_TheyNeverLeft\.git" 2>nul
+        del "NightSchool_TheyNeverLeft\*.spec" 2>nul
+    
     - name: Create ZIP archive
       run: |
         Compress-Archive -Path "NightSchool_TheyNeverLeft" -DestinationPath "NightSchool_TheyNeverLeft-Windows.zip"
+    
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
         files: NightSchool_TheyNeverLeft-Windows.zip
-        name: "Night School: They Never Left - v${{ github.ref_name }}"
+        name: "Night School: They Never Left - ${{ github.ref_name }}"
         body: |
           # Night School: They Never Left
           
@@ -49,39 +64,52 @@ jobs:
           
           ### System Requirements:
           - Windows 10 or later
-          - No installation required - runs directly!
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          - No installation required!
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build-linux:
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.9'
+    
     - name: Install system dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y libsdl2-2.0-0 libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-ttf-2.0-0
+    
     - name: Install Python dependencies
       run: |
         pip install --upgrade pip
         pip install pyinstaller pygame
+    
     - name: Build executable
       run: |
-        pyinstaller --windowed --name "NightSchool_TheyNeverLeft" --icon="icon.ico" --add-data "assets:assets" main.py
-    - name: Create game folder
+        pyinstaller --onefile --windowed --name "NightSchool_TheyNeverLeft" --add-data "assets:assets" main.py
+    
+    - name: Create game distribution folder
       run: |
         mkdir -p NightSchool_TheyNeverLeft
+        # Copy everything except .git folder
+        rsync -av --exclude='.git' --exclude='NightSchool_TheyNeverLeft' ./ NightSchool_TheyNeverLeft/
+        # Overwrite with executable
         cp dist/NightSchool_TheyNeverLeft NightSchool_TheyNeverLeft/
-        cp -r assets NightSchool_TheyNeverLeft/
+        # Clean up
+        rm -rf NightSchool_TheyNeverLeft/.git
+        rm -f NightSchool_TheyNeverLeft/*.spec
         zip -r NightSchool_TheyNeverLeft-Linux.zip NightSchool_TheyNeverLeft/
+    
     - name: Attach to Release
       if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
       with:
         files: NightSchool_TheyNeverLeft-Linux.zip
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
