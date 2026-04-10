@@ -37,9 +37,10 @@ the story is talking about an average High school that is ghost house in the Nig
 ### GUI
 - `interactive_gui.py` -> contains Helper Functions for Desplaying content in GUI
 - `gui.py` -. contains story in GUI and used to run the GUI game
-
+### Demo
+- `demo.py` -> contains all other files and is used to make the demo
 ## Installation
-Go to Release Link : https://github.com/Eng-Ahmed-Farouk/Night-School--They-Never-Left/releases/tag/v1.4.1
+Go to Release Link : https://github.com/Eng-Ahmed-Farouk/Night-School--They-Never-Left/releases/tag/v2.5.2
 
 Download `NightSchool_TheyNeverLeft-Windows.zip`
 Extract the ZIP file anywhere
