@@ -13,7 +13,7 @@ you are Max
 
 
 ## Demo
-![demo](assets/demo.mp4)
+[Click Here to see How to download the Demo!](https://drive.google.com/file/d/1VOQa7odY_GEHOGPFal-RHniT0P7vgKBQ/view?usp=sharing)
 
 ## Story
 the story is about Max ran who have to solve the clues without pause to get the rose!
