@@ -26,7 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pyinstaller pygame keyboard termcolor colorama
+        pip install pyinstaller pygame-ce keyboard termcolor colorama
     
     - name: Build executable with PyInstaller
       shell: cmd
