@@ -12,8 +12,8 @@ you are Max
 
 
 
-## Demo
-[Click Here to see How to download the Demo!](https://canva.link/llyorq4ram2xs61)
+## Demo Video
+[Click Here to see How to download and play the Demo!](https://canva.link/llyorq4ram2xs61)
 
 ## Story
 the story is about Max ran who have to solve the clues without pause to get the rose!
