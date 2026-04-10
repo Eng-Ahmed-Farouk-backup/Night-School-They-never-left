@@ -31,7 +31,7 @@ jobs:
     - name: Build executable with PyInstaller
       shell: cmd
       run: |
-        pyinstaller --onefile --console --name "NightSchool_TheyNeverLeft" --add-data "assets;assets" --hidden-import=keyboard --hidden-import=termcolor --hidden-import=colorama main.py
+        pyinstaller --onefile --console --name "NightSchool_TheyNeverLeft" --add-data "assets;assets" --hidden-import=keyboard --hidden-import=termcolor --hidden-import=colorama demo.py
     
     - name: Verify build succeeded
       shell: cmd
@@ -108,7 +108,7 @@ jobs:
     
     - name: Build executable
       run: |
-        pyinstaller --onefile --console --name "NightSchool_TheyNeverLeft" --add-data "assets:assets" --hidden-import=keyboard --hidden-import=termcolor --hidden-import=colorama main.py
+        pyinstaller --onefile --console --name "NightSchool_TheyNeverLeft" --add-data "assets:assets" --hidden-import=keyboard --hidden-import=termcolor --hidden-import=colorama demo.py
     
     - name: Verify build succeeded
       run: |
