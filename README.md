@@ -40,7 +40,7 @@ the story is talking about an average High school that is ghost house in the Nig
 ### Demo
 - `demo.py` -> contains all other files and is used to make the demo
 ## Installation
-Go to Release Link : https://github.com/Eng-Ahmed-Farouk/Night-School--They-Never-Left/releases/tag/v2.5.2
+Go to Release Link : https://github.com/Eng-Ahmed-Farouk/Night-School--They-Never-Left/releases/tag/v3.0.0
 
 Download `NightSchool_TheyNeverLeft-Windows.zip`
 Extract the ZIP file anywhere
