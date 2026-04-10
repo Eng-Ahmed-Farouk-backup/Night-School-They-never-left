@@ -1,39 +1,31 @@
-name: Build Night School EXE
-
+name: Build Night School
 on:
   push:
     tags:
       - 'v*'
   workflow_dispatch:
-
 permissions:
   contents: write
   packages: write
-
 jobs:
   build-windows:
     runs-on: windows-latest
-    
     steps:
-    - name: Checkout code
+    - name: checkout
       uses: actions/checkout@v4
-    
-    - name: Set up Python
+    - name: Setup Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.9'
-    
-    - name: Install dependencies
+    - name: Install libraries
       run: |
         python -m pip install --upgrade pip
         pip install pyinstaller pygame-ce keyboard termcolor colorama
-    
-    - name: Build executable with PyInstaller
+    - name: build exe
       shell: cmd
       run: |
         pyinstaller --onefile --console --name "NightSchool_TheyNeverLeft" --add-data "assets;assets" --hidden-import=keyboard --hidden-import=termcolor --hidden-import=colorama demo.py
-    
-    - name: Verify build succeeded
+    - name: verify
       shell: cmd
       run: |
         if exist dist\NightSchool_TheyNeverLeft.exe (
@@ -43,27 +35,23 @@ jobs:
           echo ✗ Build failed - executable not found
           exit 1
         )
-    
-    - name: Create distribution folder
+    - name: create dist
       shell: cmd
       run: |
         mkdir NightSchool_TheyNeverLeft
         copy dist\NightSchool_TheyNeverLeft.exe NightSchool_TheyNeverLeft\
         xcopy assets NightSchool_TheyNeverLeft\assets\ /E /I /Y
-    
     - name: Create ZIP archive
       shell: cmd
       run: |
         powershell Compress-Archive -Path NightSchool_TheyNeverLeft -DestinationPath NightSchool_TheyNeverLeft-Windows.zip -Force
-    
-    - name: Upload Windows artifact
+    - name: upload windows artifact
       uses: actions/upload-artifact@v4
       with:
         name: NightSchool_TheyNeverLeft-Windows
         path: NightSchool_TheyNeverLeft-Windows.zip
         retention-days: 7
-    
-    - name: Create Release
+    - name: make Release
       uses: softprops/action-gh-release@v1
       with:
         files: NightSchool_TheyNeverLeft-Windows.zip
@@ -83,34 +71,27 @@ jobs:
           - No installation required!
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   build-linux:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
+    - name: Checkout
       uses: actions/checkout@v4
-    
-    - name: Set up Python
+    - name: Setup Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.9'
-    
     - name: Install system dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y libsdl2-2.0-0 libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-ttf-2.0-0
-    
-    - name: Install Python dependencies
+    - name: Install libraries
       run: |
         pip install --upgrade pip
-        pip install pyinstaller pygame keyboard termcolor colorama
-    
-    - name: Build executable
+        pip install pyinstaller pygame-ce keyboard termcolor colorama
+    - name: Build exe
       run: |
         pyinstaller --onefile --console --name "NightSchool_TheyNeverLeft" --add-data "assets:assets" --hidden-import=keyboard --hidden-import=termcolor --hidden-import=colorama demo.py
-    
-    - name: Verify build succeeded
+    - name: verify
       run: |
         if [ -f "dist/NightSchool_TheyNeverLeft" ]; then
           echo "✓ Build successful!"
@@ -119,26 +100,22 @@ jobs:
           echo "✗ Build failed - executable not found"
           exit 1
         fi
-    
-    - name: Create distribution folder
+    - name: create dist
       run: |
         mkdir -p NightSchool_TheyNeverLeft
         cp dist/NightSchool_TheyNeverLeft NightSchool_TheyNeverLeft/
         cp -r assets NightSchool_TheyNeverLeft/
         chmod +x NightSchool_TheyNeverLeft/NightSchool_TheyNeverLeft
-    
     - name: Create tar.gz archive
       run: |
         tar -czf NightSchool_TheyNeverLeft-Linux.tar.gz NightSchool_TheyNeverLeft/
-    
-    - name: Upload Linux artifact
+    - name: upload linux artifact
       uses: actions/upload-artifact@v4
       with:
         name: NightSchool_TheyNeverLeft-Linux
         path: NightSchool_TheyNeverLeft-Linux.tar.gz
         retention-days: 7
-    
-    - name: Attach to Release
+    - name: upload in release
       if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
       with:
