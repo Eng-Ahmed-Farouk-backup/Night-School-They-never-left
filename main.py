@@ -1,4 +1,3 @@
-from entities import *
 from items import *
 from interactive_console import *
 from gui import *
