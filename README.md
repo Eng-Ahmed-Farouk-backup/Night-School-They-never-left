@@ -42,13 +42,18 @@ the story is talking about an average High school that is ghost house in the Nig
 ## Installation
 Go to Release Link : https://github.com/Eng-Ahmed-Farouk/Night-School--They-Never-Left/releases/tag/v3.0.0
 
-Download `NightSchool_TheyNeverLeft-Windows.zip`
-Extract the ZIP file anywhere
-
-Run `NightSchool_TheyNeverLeft.exe`
+1. Download `NightSchool_TheyNeverLeft-Windows.zip`
+2. Extract the ZIP file anywhere
+3. Run `NightSchool_TheyNeverLeft.exe`
+   
 System Requirements:
-
 Windows 10 or later
+
+if you are linux 
+1. Download `NightSchool_TheyNeverLeft-Linux.tar.gz`
+2. Extract the Compressed file anywhere.
+3. Run the Game !
+
 No installation required - runs directly!
 
 ## Screenshots
