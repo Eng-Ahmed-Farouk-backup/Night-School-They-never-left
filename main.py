@@ -29,7 +29,7 @@ class Game:
             if option == 0:
                 self.start_game()
             elif option == 1:
-                pass
+                gui_main()
             elif option == 2:
                 self.settings_menu()
             elif option == 3:
