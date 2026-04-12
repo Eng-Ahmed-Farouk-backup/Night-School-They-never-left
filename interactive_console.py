@@ -38,11 +38,3 @@ def println(msg, color = "white", speed = "Normal"):
             if keyboard.is_pressed("space"):break
         time.sleep(0.05)
 
-
-
-        println("You have been defeated!", "red")
-    elif not enemy.is_alive():
-        println(f"You have defeated {enemy.name}!", "green")
-        player.gold += enemy.gold_drop
-        player.honor += enemy.honor_drop
-        player.inventory.extend(enemy.drop())
